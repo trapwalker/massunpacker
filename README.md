@@ -4,15 +4,15 @@ Mass unpack utility for extracting multiple zip archives into a single directory
 
 ## Features
 
-- =æ **Batch extraction** - Process multiple zip archives with a single command
-- = **Smart collision detection** - Choose between size-only, fast hash, or SHA256 comparison
-- = **Automatic renaming** - Conflicting files are renamed (file.jpg ’ file-1.jpg)
-- < **Encoding support** - Handles various filename encodings including Cyrillic
-- =Ê **Progress tracking** - Visual progress bar with statistics
-- <¯ **Natural sorting** - Correctly handles numbered files (f1, f2, f10, f11)
-- =¾ **Disk space check** - Verifies available space before extraction
-- =Á **Archive management** - Automatically moves processed archives to OK/ERR folders
-- <¨ **Rich output** - Colored console output with detailed summaries
+- **Batch extraction** - Process multiple zip archives with a single command
+- **Smart collision detection** - Choose between size-only, fast hash, or SHA256 comparison
+- **Automatic renaming** - Conflicting files are renamed (file.jpg -> file-1.jpg)
+- **Encoding support** - Handles various filename encodings including Cyrillic
+- **Progress tracking** - Visual progress bar with statistics
+- **Natural sorting** - Correctly handles numbered files (f1, f2, f10, f11)
+- **Disk space check** - Verifies available space before extraction
+- **Archive management** - Automatically moves processed archives to OK/ERR folders
+- **Rich output** - Colored console output with detailed summaries
 
 ## Installation
 
@@ -122,10 +122,10 @@ Example output:
 ```
 Found 3 archive(s) to process
 [1/3] Processing archive1.zip...
-archive1.zip: 150 extracted, 0 skipped, 0 renamed | 5120 KB ’ 8192 KB (37.5% compression)
+archive1.zip: 150 extracted, 0 skipped, 0 renamed | 5120 KB -> 8192 KB (37.5% compression)
 [2/3] Processing archive2.zip...
-archive2.zip: 120 extracted, 30 skipped, 5 renamed | 4096 KB ’ 6144 KB (33.3% compression)
-Collision in archive2.zip: photo.jpg ’ photo-1.jpg
+archive2.zip: 120 extracted, 30 skipped, 5 renamed | 4096 KB -> 6144 KB (33.3% compression)
+Collision in archive2.zip: photo.jpg -> photo-1.jpg
 ...
 Processing complete!
 Total: 270 extracted, 30 skipped, 5 renamed, 0 errors
@@ -180,7 +180,7 @@ uv sync --dev
 
 ## Author
 
-Sergey Pankov <s.pankov@big3.ru>
+Sergey Pankov
 
 ## Acknowledgments
 
