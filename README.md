@@ -31,7 +31,14 @@ uv sync
 Extract all zip files from a directory:
 
 ```bash
+# With quoted pattern (prevents shell expansion)
 massunpacker "path/to/archives/*.zip"
+
+# Without quotes (shell expands *.zip to file list)
+massunpacker *.zip
+
+# Explicit file list
+massunpacker file1.zip file2.zip file3.zip
 ```
 
 ### Advanced options
@@ -43,11 +50,14 @@ massunpacker "data/folder_*/file_*.zip" \
   --collision=hash-fast \
   --mv-ok=processed \
   --mv-er=failed
+
+# Or with expanded glob pattern
+massunpacker *.zip --count=5 --extract-to=output
 ```
 
 ### Command-line options
 
-- `PATTERN` - Glob pattern for zip files (required)
+- `PATTERNS` - One or more glob patterns or zip file paths (required)
 - `--extract-to, -o` - Output directory (default: current directory)
 - `--count, -n` - Limit number of archives to process
 - `--mv-ok` - Move successful archives here (default: ./OK)

@@ -94,7 +94,7 @@ def print_summary(result: ExtractionResult) -> None:
 
 @app.command()
 def main(
-    pattern: str = typer.Argument(..., help="Glob pattern for zip files (e.g., 'data/*.zip')"),
+    patterns: list[str] = typer.Argument(..., help="Glob pattern(s) or zip file(s) (e.g., 'data/*.zip' or file1.zip file2.zip)"),
     extract_to: Optional[Path] = typer.Option(
         None, "--extract-to", "-o", help="Output directory (default: current directory)"
     ),
@@ -117,8 +117,10 @@ def main(
     """
     Extract multiple zip archives to a single directory with collision handling.
 
-    Example:
-        massunpacker "data/folder_*/file_*.zip" --extract-to=output --count=10
+    Examples:
+        massunpacker "data/*.zip" --extract-to=output
+        massunpacker *.zip --count=10
+        massunpacker file1.zip file2.zip file3.zip
     """
     setup_i18n()
     setup_logging(verbose)
@@ -138,10 +140,10 @@ def main(
         ensure_directory(mv_er, "ERR directory")
 
         # Get list of archives
-        archives = get_sorted_zip_files(pattern, limit=count)
+        archives = get_sorted_zip_files(patterns, limit=count)
 
         if not archives:
-            err_console.print(f"[red]No zip files found matching pattern: {pattern}[/red]")
+            err_console.print(f"[red]No zip files found matching patterns: {', '.join(patterns)}[/red]")
             raise typer.Exit(code=1)
 
         console.print(f"Found {len(archives)} archive(s) to process")

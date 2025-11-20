@@ -22,7 +22,11 @@ uv run massunpacker --help
 
 1. **Extract all zips from a folder:**
    ```bash
+   # With quoted pattern
    massunpacker "/path/to/archives/*.zip"
+
+   # Or without quotes (shell expands to file list)
+   massunpacker *.zip
    ```
 
 2. **Extract to specific directory:**
@@ -32,15 +36,21 @@ uv run massunpacker --help
 
 3. **Process first 5 archives only:**
    ```bash
-   massunpacker "*.zip" --count=5
+   # Works with or without quotes
+   massunpacker *.zip --count=5
    ```
 
-4. **Use SHA256 for collision detection:**
+4. **Explicit file list:**
+   ```bash
+   massunpacker file1.zip file2.zip file3.zip
+   ```
+
+5. **Use SHA256 for collision detection:**
    ```bash
    massunpacker "*.zip" --collision=hash-sha256
    ```
 
-5. **Custom OK/ERR folders:**
+6. **Custom OK/ERR folders:**
    ```bash
    massunpacker "*.zip" --mv-ok=processed --mv-er=failed
    ```
