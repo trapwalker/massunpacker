@@ -1,0 +1,28 @@
+[project]
+name = "massunpacker"
+version = "0.1.0"
+description = "Mass unpack utility for extracting multiple zip archives with collision handling"
+readme = "README.md"
+authors = [
+    { name = "Sergey Pankov", email = "s.pankov@big3.ru" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "typer>=0.12.0",
+    "rich>=13.7.0",
+    "xxhash>=3.4.0",
+    "natsort>=8.4.0",
+]
+
+[project.scripts]
+massunpacker = "massunpacker.cli:app"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
