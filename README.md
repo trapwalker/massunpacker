@@ -16,10 +16,20 @@ Mass unpack utility for extracting multiple zip archives into a single directory
 
 ## Installation
 
-Using uv (recommended):
+### Quick install (recommended)
+
+Using uv tool:
 
 ```bash
-git clone <repository-url>
+uv tool install git+https://github.com/trapwalker/massunpacker
+```
+
+### Development install
+
+Clone and install locally:
+
+```bash
+git clone https://github.com/trapwalker/massunpacker
 cd massunpacker
 uv sync
 ```
